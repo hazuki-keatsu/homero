@@ -1,9 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<meta name="theme-color" content="" />
+		<script>
+			// To avoid color flashing
+			(function () {
+				const stored = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const theme = stored ?? (prefersDark ? 'dark' : 'light');
+				const root = document.firstElementChild;
+				root?.setAttribute('data-theme', theme);
+				root?.classList.toggle('dark', theme === 'dark');
+				// export to theme.ts to avoid double-detection
+				window.__theme = { value: theme };
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
