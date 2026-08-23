@@ -1,56 +1,122 @@
+@font-face {
+	font-family: 'HarmonyOS Sans SC';
+	src: url('../lib/assets/fonts/HarmonyOS_Sans_SC_Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'HarmonyOS Sans SC';
+	src: url('../lib/assets/fonts/HarmonyOS_Sans_SC_Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'HarmonyOS Sans SC';
+	src: url('../lib/assets/fonts/HarmonyOS_Sans_SC_Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'HarmonyOS Sans SC';
+	src: url('../lib/assets/fonts/HarmonyOS_Sans_SC_Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'HarmonyOS Sans SC';
+	src: url('../lib/assets/fonts/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'HarmonyOS Sans SC';
+	src: url('../lib/assets/fonts/HarmonyOS_Sans_SC_Black.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
 @theme inline {
-	--color-bg-body: var(--bg-body);
-	--color-bg-sidebar: var(--bg-sidebar);
-	--color-bg-card: var(--bg-card);
-	--color-text-primary: var(--text-primary);
-	--color-text-secondary: var(--text-secondary);
-	--color-text-address: var(--text-address);
-	--color-accent-text: var(--color-text);
-	--color-accent-data: var(--color-data);
-	--color-accent-bss: var(--color-bss);
-	--color-accent-heap: var(--color-heap);
-	--color-accent-stack: var(--color-stack);
-	--color-accent-audio: var(--color-audio);
+	--font-sans:
+		'HarmonyOS Sans SC', 'HarmonyOS Sans', 'PingFang SC', 'Hiragino Sans GB',
+		'Microsoft YaHei', 'Noto Sans SC', system-ui, sans-serif;
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-border: var(--border);
+	--color-ring: var(--ring);
+	--color-address: var(--address);
+	--color-data: var(--data);
+	--color-bss: var(--bss);
+	--color-heap: var(--heap);
+	--color-stack: var(--stack);
+	--color-audio: var(--audio);
 	--color-perm-ro: var(--perm-ro);
 	--color-perm-rw: var(--perm-rw);
-	--color-hover-bg: var(--hover-bg);
-	--color-audio-wave: var(--audio-wave);
+	--color-wave: var(--wave);
 }
 
 :root {
-	--bg-body: #0d1016;
-	--bg-sidebar: #161a22;
-	--bg-card: #1b202a;
-	--text-primary: #e6edf5;
-	--text-secondary: #8b9bb4;
-	--text-address: #4a5a72;
-	--color-text: #3b82f6;
-	--color-data: #10b981;
-	--color-bss: #f59e0b;
-	--color-heap: #a78bfa;
-	--color-stack: #06b6d4;
-	--color-audio: #f472b6;
+	--background: #0d1016;
+	--foreground: #e6edf5;
+	--card: #1b202a;
+	--card-foreground: #e6edf5;
+	--sidebar: #161a22;
+	--sidebar-foreground: #e6edf5;
+	--muted: #242c3b;
+	--muted-foreground: #8b9bb4;
+	--accent: #3b82f6;
+	--accent-foreground: #0d1016;
+	--border: #242c3b;
+	--ring: #3b82f6;
+	--address: #4a5a72;
+	--data: #10b981;
+	--bss: #f59e0b;
+	--heap: #a78bfa;
+	--stack: #06b6d4;
+	--audio: #f472b6;
 	--perm-ro: #6b7a8f;
 	--perm-rw: #8b9bb4;
-	--hover-bg: #242c3b;
-	--audio-wave: #ec4899;
+	--wave: #ec4899;
 }
 
 [data-theme='light'] {
-	--bg-body: #f4f6fa;
-	--bg-sidebar: #e8ecf3;
-	--bg-card: #ffffff;
-	--text-primary: #1e2430;
-	--text-secondary: #5e6e86;
-	--text-address: #b0c0d4;
-	--color-text: #2563eb;
-	--color-data: #059669;
-	--color-bss: #d97706;
-	--color-heap: #7c3aed;
-	--color-stack: #0891b2;
-	--color-audio: #db2777;
+	--background: #f4f6fa;
+	--foreground: #1e2430;
+	--card: #ffffff;
+	--card-foreground: #1e2430;
+	--sidebar: #e8ecf3;
+	--sidebar-foreground: #1e2430;
+	--muted: #e0e7f0;
+	--muted-foreground: #5e6e86;
+	--accent: #2563eb;
+	--accent-foreground: #ffffff;
+	--border: #e0e7f0;
+	--ring: #2563eb;
+	--address: #b0c0d4;
+	--data: #059669;
+	--bss: #d97706;
+	--heap: #7c3aed;
+	--stack: #0891b2;
+	--audio: #db2777;
 	--perm-ro: #8a9bb0;
 	--perm-rw: #4b5a70;
-	--hover-bg: #e0e7f0;
-	--audio-wave: #be185d;
+	--wave: #be185d;
 }

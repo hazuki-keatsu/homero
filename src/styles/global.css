@@ -1,0 +1,24 @@
+@layer base {
+	* {
+		border-color: var(--color-border);
+		outline-color: color-mix(in oklab, var(--color-accent) 75%, transparent);
+		scrollbar-color: var(--color-muted) transparent;
+        transition: background 1s;
+	}
+
+	body {
+		background-color: var(--color-background);
+		color: var(--color-foreground);
+	}
+
+	a,
+	button {
+		outline-offset: 1px;
+	}
+
+	a:focus-visible,
+	button:focus-visible {
+		text-decoration: none;
+		outline: 2px dashed var(--color-accent);
+	}
+}
