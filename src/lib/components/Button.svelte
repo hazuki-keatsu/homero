@@ -33,7 +33,7 @@
 <button
 	type="button"
 	{...rest}
-	class="bg-card p-2 text-foreground {className}"
+	class="bg-card px-2 py-1 text-foreground {className}"
 	onclick={handleClick}
 	disabled={disable}
 >

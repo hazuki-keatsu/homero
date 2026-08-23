@@ -21,7 +21,6 @@ function persist(): void {
 function reflect(): void {
 	const root = document.firstElementChild;
 	root?.setAttribute('data-theme', themeValue);
-	document.querySelector('#theme-btn')?.setAttribute('aria-label', themeValue);
 
 	// Fill the page background by the calculated page background color.
 	// Make the Android browser being the same color with the page background.
@@ -34,13 +33,13 @@ export function initTheme(): void {
 		(window as unknown as { __theme?: { value: string } }).__theme?.value ?? getPreferredTheme();
 	reflect();
 
-	document.querySelector('#theme-btn')?.addEventListener('click', () => {
-		themeValue = themeValue === LIGHT ? DARK : LIGHT;
-		persist();
-	});
-
 	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches }) => {
 		themeValue = matches ? DARK : LIGHT;
 		persist();
 	});
+}
+
+export function toggleTheme(): void {
+	themeValue = themeValue === LIGHT ? DARK : LIGHT;
+	persist();
 }

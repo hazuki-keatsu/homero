@@ -1,3 +1,4 @@
+import { join } from 'node:path';
 import { mdsvex } from 'mdsvex';
 import tailwindcss from '@tailwindcss/vite';
 import adapter from '@sveltejs/adapter-auto';
@@ -18,7 +19,15 @@ export default defineConfig({
 			// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 			adapter: adapter(),
-			preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
+			preprocess: [
+				mdsvex({
+					extensions: ['.svx', '.md'],
+					// Must be an absolute path from this file's location — mdsvex uses it for both
+					// fs.readFileSync and the injected import; $lib/ or ./src/ forms fail.
+					layout: join(import.meta.dirname, 'src/lib/layouts/MDLayout.svelte'),
+					layoutPropForwarding: 'runes'
+				})
+			],
 			extensions: ['.svelte', '.svx', '.md']
 		})
 	]

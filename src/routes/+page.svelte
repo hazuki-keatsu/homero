@@ -1,10 +1,16 @@
 <script lang="ts">
-	import Button from '$lib/components/Button.svelte';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import { onMount } from 'svelte';
+	import { detectLocale } from '$lib/utils/i18n';
+
+	onMount(() => {
+		// `+` widens to string; resolve() requires route-literal typing
+		const target = ('/' + detectLocale(navigator.language)) as '/zh-cn' | '/en';
+		goto(resolve(target), { replaceState: true });
+	});
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-
-<Button class="text-2xl" id="theme-btn">switch theme</Button>
-
-<Button class="text-2xl" disable={true}>disabled</Button>
+<svelte:head>
+	<meta name="robots" content="noindex" />
+</svelte:head>
