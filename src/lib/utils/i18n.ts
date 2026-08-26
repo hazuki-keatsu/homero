@@ -6,15 +6,22 @@ export const LOCALES = [
 export type LocaleCode = (typeof LOCALES)[number]['code'];
 export type Locale = (typeof LOCALES)[number];
 
-/** Detect the locale from a BCP47 language tag. */
 export function detectLocale(language = ''): LocaleCode {
 	return language.toLowerCase().startsWith('zh') ? 'zh-cn' : 'en';
 }
 
-/** Map a pathname to a locale. Defaults to en. */
 export function localeFromPath(pathname: string): Locale {
-	return (
-		LOCALES.find((l) => pathname === `/${l.code}` || pathname.startsWith(`/${l.code}/`)) ??
-		LOCALES.find((l) => l.code === 'en')!
-	);
+	if (pathname.endsWith('en')) {
+		return LOCALES[1];
+	} else {
+		return LOCALES[0];
+	}
+}
+
+export function anotherLocale(current: Locale) {
+	if (current.code === 'zh-cn') {
+		return LOCALES[1];
+	} else {
+		return LOCALES[0];
+	}
 }

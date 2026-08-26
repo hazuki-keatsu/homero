@@ -4,13 +4,13 @@
 	let {
 		children,
 		onclick,
-		disable,
+		disabled,
 		class: className = '',
 		...rest
 	}: {
 		children: Snippet;
 		onclick?: () => void;
-		disable?: boolean;
+		disabled?: boolean;
 		class?: string;
 		[key: string]: unknown;
 	} = $props();
@@ -18,7 +18,7 @@
 	let animation = $state(false);
 
 	function handleClick() {
-		if (disable) return;
+		if (disabled) return;
 		animation = true;
 		onclick?.();
 	}
@@ -33,12 +33,12 @@
 <button
 	type="button"
 	{...rest}
-	class="bg-card px-2 py-1 text-foreground {className}"
+	class="rounded-sm bg-card px-2 py-1 text-left {className}"
 	onclick={handleClick}
-	disabled={disable}
+	{disabled}
 >
 	{#key animation}
-		<span class:anim={animation} onanimationend={onAnimationEnd}>
+		<span class="bg-card-foreground" class:anim={animation} onanimationend={onAnimationEnd}>
 			{@render children()}
 		</span>
 	{/key}
@@ -47,40 +47,18 @@
 <style>
 	button {
 		--slider-height: 100%;
-		--cursor-width: 0.7ch;
-		--cursor-left-gap: 1px;
 	}
 
 	button span {
 		position: relative;
 		display: inline-block;
-		padding-left: calc(var(--cursor-width) + var(--cursor-left-gap));
 		background: linear-gradient(var(--color-foreground), var(--color-foreground)) no-repeat;
 		background-size: 0 var(--slider-height);
 		background-position: left bottom;
 	}
 
-	button span::before {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: var(--cursor-width);
-		height: var(--slider-height);
-		background-color: var(--color-foreground);
-		opacity: 1;
-	}
-
 	button span.anim {
 		animation: wipe 1s;
-	}
-
-	button:hover span::before {
-		animation: blink 1s infinite;
-	}
-
-	button:hover span.anim::before {
-		animation: none;
 	}
 
 	button:disabled {
@@ -111,18 +89,6 @@
 		100% {
 			background-size: 0 var(--slider-height);
 			background-position: right bottom;
-		}
-	}
-
-	@keyframes blink {
-		0% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
 		}
 	}
 </style>

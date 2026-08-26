@@ -5,7 +5,13 @@ const THEME_KEY = 'theme';
 const LIGHT = 'light';
 const DARK = 'dark';
 
-let themeValue: string;
+export type THEME = 'dark' | 'light';
+
+let themeValue: string = $state(DARK);
+
+export function getTheme(): string {
+	return themeValue;
+}
 
 function getPreferredTheme(): string {
 	const stored = localStorage.getItem(THEME_KEY);
@@ -41,5 +47,10 @@ export function initTheme(): void {
 
 export function toggleTheme(): void {
 	themeValue = themeValue === LIGHT ? DARK : LIGHT;
+	persist();
+}
+
+export function switchTheme(theme: THEME) {
+	themeValue = theme;
 	persist();
 }

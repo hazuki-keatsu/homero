@@ -3,7 +3,7 @@
 		border-color: var(--color-border);
 		outline-color: color-mix(in oklab, var(--color-accent) 75%, transparent);
 		scrollbar-color: var(--color-muted) transparent;
-		transition: background 1s;
+		/* transition: background 1s; */
 	}
 
 	body {
