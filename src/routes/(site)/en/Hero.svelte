@@ -2,6 +2,7 @@
 	import type { BadgeProps } from '$lib/components/Badge.svelte';
 	import Badge from '$lib/components/Badge.svelte';
 	import ScrollDown from '$lib/components/ScrollDown.svelte';
+	import Typewriter from '$lib/components/Typewriter.svelte';
 	import { siFlutter, siRust, siSvelte, siTypescript } from 'simple-icons';
 
 	let badges: BadgeProps[] = [
@@ -26,6 +27,15 @@
 			color: siTypescript.hex
 		}
 	];
+
+	let typingNote = $state(0);
+
+	function onComplete() {
+		typingNote++;
+	}
+
+	let typewriterClass = "absolute top-0 left-0";
+	let typewriterTextClass = "text-xl text-foreground md:text-2xl"
 </script>
 
 <section
@@ -34,9 +44,32 @@
 >
 	<h1 class="-ml-1 text-6xl font-bold md:text-7xl">Hazuki Keatsu</h1>
 
-	<p class="mt-6 text-xl text-accent md:text-2xl">
-		Front-end Engineering · Compiler · Open-source Software
-	</p>
+	<div class="relative mt-6 h-6">
+		<Typewriter
+			class={typewriterClass}
+			textClass={typewriterTextClass}
+			start={typingNote % 3 === 0}
+			loop={true}
+			onDeleteComplete={onComplete}
+			text="Front-end Engineering"
+		/>
+		<Typewriter
+			class={typewriterClass}
+			textClass={typewriterTextClass}
+			start={typingNote % 3 === 1}
+			loop={true}
+			onDeleteComplete={onComplete}
+			text="Source Compiler"
+		/>
+		<Typewriter
+			class={typewriterClass}
+			textClass={typewriterTextClass}
+			start={typingNote % 3 === 2}
+			loop={true}
+			onDeleteComplete={onComplete}
+			text="Open-source Software"
+		/>
+	</div>
 
 	<p class="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
 		An undergraduate at Xidian University majoring in Software Engineering. I am proficient in using
@@ -44,7 +77,7 @@
 		project.
 	</p>
 
-	<div class="mt-6 max-w-2xl flex gap-5">
+	<div class="mt-6 flex max-w-2xl gap-5">
 		{#each badges as badge, index (`badge-${index}`)}
 			<Badge text={badge.text} color={badge.color} icon={badge.icon} />
 		{/each}

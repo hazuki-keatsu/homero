@@ -14,6 +14,9 @@ importers:
       '@willingtonortiz/svelte-simple-icons':
         specifier: ^0.0.3
         version: 0.0.3(simple-icons@16.28.0)(svelte@5.56.10(@typescript-eslint/types@8.67.0))
+      gsap:
+        specifier: ^3.15.0
+        version: 3.15.0
       simple-icons:
         specifier: ^16.28.0
         version: 16.28.0
@@ -742,6 +745,9 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  gsap@3.15.0:
+    resolution: {integrity: sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==}
 
   hast-util-heading-rank@3.0.0:
     resolution: {integrity: sha512-EJKb8oMUXVHcWZTDepnr+WNbfnXKFNf9duMesmr4S8SXTJBJ9M4Yok08pu9vxdJwdlGRhVumk9mEhkEvKGifwA==}
@@ -1956,6 +1962,8 @@ snapshots:
   globals@17.11.0: {}
 
   graceful-fs@4.2.11: {}
+
+  gsap@3.15.0: {}
 
   hast-util-heading-rank@3.0.0:
     dependencies:

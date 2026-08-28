@@ -115,5 +115,6 @@
 <style>
 	.container {
 		background-color: var(--badge-bg-color);
+		transition: background-color 0.3 ease
 	}
 </style>
