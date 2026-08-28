@@ -3,6 +3,17 @@
 	import { Mail } from '@lucide/svelte';
 	import { SIIcon } from '@willingtonortiz/svelte-simple-icons';
 	import { siBilibili, siGithub } from 'simple-icons';
+	import CurvedArrow from '$lib/components/icons/CurvedArrow.svelte';
+	import { getTheme } from '$lib/utils/theme.svelte';
+
+	let strokeColor = $state('');
+	let theme = $derived(getTheme());
+
+	$effect(() => {
+		void theme;
+		let styles = getComputedStyle(document.documentElement);
+		strokeColor = styles.getPropertyValue('--color-foreground').trim();
+	})
 </script>
 
 <div class="fixed bottom-0 left-0 ml-6 hidden flex-col items-center gap-1 lg:flex">
@@ -12,7 +23,7 @@
 		aria-label="Github"
 		title="Github"
 		target="_blank"
-		rel="noopener noreferrer"
+		rel="noopener noreferrer external"
 	>
 		<SIIcon class="text-foreground" icon={siGithub} />
 	</a>
@@ -22,7 +33,7 @@
 		aria-label="Bilibili"
 		title="Bilibili"
 		target="_blank"
-		rel="noopener noreferrer"
+		rel="noopener noreferrer external"
 	>
 		<SIIcon class="text-foreground" icon={siBilibili} />
 	</a>
@@ -31,8 +42,13 @@
 		href={site.socialLink.email}
 		aria-label="Email"
 		title="Email"
+		rel="external"
 	>
 		<Mail class="text-foreground" />
 	</a>
 	<div class="mt-1 h-20 w-1 bg-foreground"></div>
+	{#key theme}
+		<CurvedArrow class="absolute -top-1 -right-30 h-30 w-25" strokeWidth={5} stroke={strokeColor} />
+	{/key}
+	<div class="absolute -top-4 -right-40 font-bold text-foreground">Contact Me</div>
 </div>
