@@ -6,6 +6,10 @@
 		/* transition: background 1s; */
 	}
 
+	html {
+		scroll-behavior: smooth;
+	}
+
 	body {
 		background-color: var(--color-background);
 		color: var(--color-foreground);

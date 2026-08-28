@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import Header from '$lib/components/Header.svelte';
+	import SocialLink from '$lib/components/SocialLink.svelte';
 	import { localeFromPath } from '$lib/utils/i18n';
 
 	let { children } = $props();
@@ -13,4 +15,6 @@
 	});
 </script>
 
+<Header lang={locale} />
 {@render children()}
+<SocialLink />

@@ -1,7 +1,9 @@
 <script>
-	import Header from '$lib/components/Header.svelte';
+	import Hero from './Hero.svelte';
+	import Self from './Self.svelte';
 </script>
 
 <main>
-	<Header />
+	<Hero />
+	<Self />
 </main>

@@ -1,52 +1,24 @@
 <script lang="ts">
-	import { switchTheme, getTheme } from '$lib/utils/theme.svelte';
 	import Link from '$lib/components/Link.svelte';
-	import Switcher from '$lib/components/Switcher.svelte';
-	import { localeFromPath, anotherLocale } from '$lib/utils/i18n';
-	import { page } from '$app/state';
+	import ThemeButton from '$lib/components/ThemeButton.svelte';
+	import { anotherLocale, type Locale } from '$lib/utils/i18n';
 
-	let lang = $state(localeFromPath(page.route.id ?? ''));
+	let { lang }: { lang: Locale } = $props();
+
 	let anotherLang = $derived(anotherLocale(lang));
-
-	const toggleTheme = (status: boolean) => {
-		if (status) {
-			switchTheme('light');
-		} else {
-			switchTheme('dark');
-		}
-	};
-
-	let themeValueBool = $derived(getTheme() === 'light');
 </script>
 
-<header class="sticky top-0 z-30 flex items-center justify-between bg-card px-6 py-2">
-	<Link noUnderlined={true} href="/{lang.code}" class="text-xl font-bold"
-		><span
-			class={[
-				'bg-linear-to-r bg-clip-text text-transparent',
-				'from-blue to-cyan',
-				'dark:from-emerald dark:to-violet'
-			]}>Hazuki</span
-		> Keatsu</Link
+<header
+	class={[
+		'fixed inset-x-0 z-30 mx-auto flex items-center justify-between bg-card/50 px-3 py-2 backdrop-blur-md transition-[padding] md:px-6'
+	]}
+>
+	<Link noUnderlined={true} href="/{lang.code}" class="text-lg font-bold md:text-xl"
+		>Hazuki Keatsu</Link
 	>
-	<nav class="flex items-center gap-3">
-		<Link target="_blank" href="https://blog.keatsu.top">
-			{#if lang.code === 'en'}
-				Blog
-			{:else}
-				博客
-			{/if}
-		</Link>
-	</nav>
-	<div class="flex items-center gap-2">
-		<Link href={'/' + anotherLang.code}>{anotherLang.label}</Link>
-		<p>
-			{#if lang.code === 'en'}
-				Light Mode
-			{:else}
-				亮色模式
-			{/if}
-		</p>
-		<Switcher onchange={toggleTheme} checked={themeValueBool}></Switcher>
+	<nav class="flex items-center gap-3"></nav>
+	<div class="flex items-center gap-3">
+		<Link data-sveltekit-noscroll href={'/' + anotherLang.code}>{anotherLang.label}</Link>
+		<ThemeButton {lang} />
 	</div>
 </header>
