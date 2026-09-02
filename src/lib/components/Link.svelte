@@ -59,7 +59,6 @@
 	const baseClasses = $derived(
 		[
 			className,
-			'py-2 px-2',
 			disabled && 'pointer-events-none opacity-50 text-muted-foreground',
 			!disabled && 'text-foreground'
 		].flat()

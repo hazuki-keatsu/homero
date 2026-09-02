@@ -98,7 +98,7 @@
 						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 						<a
 							class="inline-flex items-center justify-center rounded-full bg-[#181717] p-1 text-white transition-colors"
-							href={finalHref(project.github!)}
+							href={finalHref(project.link!)}
 							target="_blank"
 							rel="noopener noreferrer external"><Link size={20} strokeWidth={2.5} /></a
 						>

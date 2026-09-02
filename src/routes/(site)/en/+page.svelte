@@ -1,4 +1,5 @@
 <script>
+	import Footer from './Footer.svelte';
 	import Hero from './Hero.svelte';
 	import Projects from './Projects.svelte';
 	import Self from './Self.svelte';
@@ -8,4 +9,5 @@
 	<Hero />
 	<Self />
 	<Projects />
+	<Footer />
 </main>

@@ -34,8 +34,8 @@
 		typingNote++;
 	}
 
-	let typewriterClass = "absolute top-0 left-0";
-	let typewriterTextClass = "text-xl text-foreground md:text-2xl"
+	let typewriterClass = 'absolute top-0 left-0';
+	let typewriterTextClass = 'text-xl text-foreground md:text-2xl';
 </script>
 
 <section

@@ -10,7 +10,7 @@
 
 <header
 	class={[
-		'fixed inset-x-0 z-30 mx-auto flex items-center justify-between bg-card/50 px-3 py-2 backdrop-blur-md transition-[padding] md:px-6'
+		'fixed inset-x-0 z-30 mx-auto flex items-center justify-between bg-card/50 px-3 py-3 backdrop-blur-md transition-[padding] md:px-6'
 	]}
 >
 	<Link noUnderlined={true} href="/{lang.code}" class="text-lg font-bold md:text-xl"

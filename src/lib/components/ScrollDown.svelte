@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { finalHref } from "$lib/utils/finalHref";
+	import { finalHref } from '$lib/utils/finalHref';
 
 	let {
 		class: className = '',
@@ -10,8 +10,6 @@
 		href: string;
 		[key: string]: unknown;
 	} = $props();
-
-	
 </script>
 
 <div role="presentation" class={[className, 'py-2']}>

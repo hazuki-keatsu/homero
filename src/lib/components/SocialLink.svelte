@@ -14,7 +14,7 @@
 		void theme;
 		let styles = getComputedStyle(document.documentElement);
 		strokeColor = styles.getPropertyValue('--color-foreground').trim();
-	})
+	});
 </script>
 
 <div class="fixed bottom-0 left-0 ml-6 hidden flex-col items-center gap-1 lg:flex">
@@ -49,9 +49,13 @@
 	</a>
 	<div class="mt-1 h-20 w-1 bg-foreground"></div>
 	{#key theme}
-		<CurvedArrow class="hidden absolute -top-1 -right-30 h-30 w-25 2xl:block" strokeWidth={5} stroke={strokeColor} />
+		<CurvedArrow
+			class="absolute -top-1 -right-30 hidden h-30 w-25 2xl:block"
+			strokeWidth={5}
+			stroke={strokeColor}
+		/>
 	{/key}
-	<ScrollReveal class="hidden absolute -top-4 -right-40 2xl:block">
+	<ScrollReveal class="absolute -top-4 -right-40 hidden 2xl:block">
 		<div class="font-bold text-foreground">Contact Me</div>
 	</ScrollReveal>
 </div>

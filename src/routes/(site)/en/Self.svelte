@@ -9,7 +9,7 @@
 	/>
 
 	<div class="w-full max-w-2xl">
-		<h2 class="text-3xl font-bold text-center sm:text-4xl md:text-left">About Me</h2>
+		<h2 class="text-center text-3xl font-bold sm:text-4xl md:text-left">About</h2>
 
 		<div class="mt-8 space-y-6 text-base leading-relaxed sm:text-lg">
 			<p>
@@ -21,5 +21,5 @@
 				free to reach out.
 			</p>
 		</div>
-	</div>	
+	</div>
 </section>

@@ -1,4 +1,4 @@
-import { resolve } from "$app/paths";
+import { resolve } from '$app/paths';
 
 export const finalHref = (href: string) => {
 	if (/^(https?:|mailto:|tel:|ftp:)/i.test(href) || href.startsWith('#')) {
