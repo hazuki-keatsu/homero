@@ -7,7 +7,7 @@
 		strokeLinecap = 'round',
 		strokeLinejoin = 'round',
 		stroke = 'black',
-		duration = 1000,
+		duration = 1500,
 	}: {
 		class?: string | string[];
 		strokeWidth?: number;
@@ -23,17 +23,18 @@
 	onMount(() => {
 		if (!container) return;
 		const paths = container.querySelectorAll('path');
+		const delays = [0, duration / 2, duration * 3 / 4];
+		const durations = [duration / 2, duration / 4, duration / 4];
 		paths.forEach((path, index) => {
 			const length = path.getTotalLength();
 			path.style.strokeDasharray = length.toString();
 			path.style.strokeDashoffset = length.toString();
-			const delay = index * duration;
 			setTimeout(() => {
 				requestAnimationFrame(() => {
-					path.style.transition = `stroke-dashoffset ${duration}ms ease-in-out`;
+					path.style.transition = `stroke-dashoffset ${durations[index]}ms ease-in-out`;
 					path.style.strokeDashoffset = '0';
 				});
-			}, delay);
+			}, delays[index]);
 		});
 	});
 </script>
