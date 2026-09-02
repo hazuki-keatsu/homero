@@ -5,6 +5,7 @@
 		siFlutter,
 		siGithub,
 		siKotlin,
+		siLlvm,
 		siRust,
 		siSvelte,
 		siSwift,
@@ -17,7 +18,7 @@
 	type Project = {
 		name: string;
 		description: string;
-		stack: { text: string; color: string; icon: SimpleIcon }[];
+		stack: { text: string; icon: SimpleIcon }[];
 		github?: string;
 		link?: string;
 		role: 'Owner' | 'Cooperator' | 'Contributor';
@@ -29,9 +30,9 @@
 			description:
 				'An open-source student information lookup software for XDU students, including features like class schedule check, grade check, and electricity bill check.',
 			stack: [
-				{ text: 'Flutter', color: siFlutter.hex, icon: siFlutter },
-				{ text: 'Swift', color: siSwift.hex, icon: siSwift },
-				{ text: 'Kotlin', color: siKotlin.hex, icon: siKotlin }
+				{ text: 'Flutter', icon: siFlutter },
+				{ text: 'Swift', icon: siSwift },
+				{ text: 'Kotlin', icon: siKotlin }
 			],
 			github: 'https://github.com/BenderBlog/traintime_pda',
 			link: 'https://xdyou.superbart.top/',
@@ -41,14 +42,17 @@
 			name: 'Corgi',
 			description:
 				'Corgi is a language centered around explicit allocators. It does away with garbage collection and borrow checking, while keeping C-level performance, and offers a Go-like easy-to-read concurrency model with type safety. Still in developing...',
-			stack: [{ text: 'Rust', color: siRust.hex, icon: siRust }],
+			stack: [
+				{ text: 'Rust', icon: siRust },
+				{ text: 'LLVM', icon: siLlvm }
+			],
 			role: 'Owner'
 		},
 		{
 			name: 'Homero',
 			description:
 				'The home page template with minimalism which is the website you are browsing. And the blog renderer based on Markdown is integrated into the template.',
-			stack: [{ text: 'Svelte', color: siSvelte.hex, icon: siSvelte }],
+			stack: [{ text: 'Svelte', icon: siSvelte }],
 			github: 'https://github.com/hazuki-keatsu/homero',
 			role: 'Owner'
 		}
@@ -68,10 +72,10 @@
 				<span
 					class="ml-3 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold
     {project.role === 'Owner'
-						? 'bg-emerald/10 text-emerald'
+						? 'bg-accent/10 text-accent'
 						: project.role === 'Cooperator'
-							? 'bg-blue/10 text-blue'
-							: 'bg-amber/10 text-amber'}"
+							? 'bg-muted text-muted-foreground'
+							: 'bg-muted text-muted-foreground'}"
 				>
 					{project.role}
 				</span>
@@ -84,20 +88,20 @@
 					class="flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-muted-foreground sm:text-sm"
 				>
 					{#each project.stack as tech (tech.text)}
-						<li><Badge text={tech.text} color={tech.color} icon={tech.icon} /></li>
+						<li><Badge text={tech.text} icon={tech.icon} /></li>
 					{/each}
 				</ul>
-				<div class="flex gap-2">
+				<div class="flex gap-2 pr-1">
 					{#if project.github !== undefined}
 						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 						<a href={finalHref(project.github!)} target="_blank" rel="noopener noreferrer external"
-							><SIIcon icon={siGithub} size={28} /></a
+							><SIIcon icon={siGithub} size={28} class="text-foreground" /></a
 						>
 					{/if}
 					{#if project.link !== undefined}
 						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 						<a
-							class="inline-flex items-center justify-center rounded-full bg-[#181717] p-1 text-white transition-colors"
+							class="inline-flex items-center justify-center rounded-full bg-[#181717] p-1 text-white dark:bg-white dark:text-[#181717]"
 							href={finalHref(project.link!)}
 							target="_blank"
 							rel="noopener noreferrer external"><Link size={20} strokeWidth={2.5} /></a
@@ -114,7 +118,7 @@
 	class="relative mx-auto flex min-h-dvh max-w-5xl flex-col justify-center px-6 py-24"
 >
 	<ScrollReveal class="w-full" y={24} duration={0.7}>
-		<h2 class="mb-1 text-3xl font-bold sm:text-4xl">Projects</h2>
+		<h2 class="mb-1 text-3xl font-black tracking-tight sm:text-4xl">Projects</h2>
 	</ScrollReveal>
 
 	<ul class="mt-10 w-full divide-y divide-border">

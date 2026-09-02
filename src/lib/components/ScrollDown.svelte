@@ -19,8 +19,16 @@
 
 <style>
 	a {
-		background: linear-gradient(var(--color-foreground), var(--color-foreground)) no-repeat;
+		/* The accent is reserved for a handful of signature moments — this is one. */
+		background: linear-gradient(var(--color-accent), var(--color-accent)) no-repeat;
 		animation: underlined 1s ease-in-out infinite;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		a {
+			animation: none;
+			background-size: 100% 2px;
+		}
 	}
 
 	@keyframes underlined {

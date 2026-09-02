@@ -63,13 +63,6 @@
 	--color-accent: var(--accent);
 	--color-accent-foreground: var(--accent-foreground);
 	--color-border: var(--border);
-	--color-blue: var(--blue);
-	--color-emerald: var(--emerald);
-	--color-amber: var(--amber);
-	--color-violet: var(--violet);
-	--color-cyan: var(--cyan);
-	--color-pink: var(--pink);
-	--color-pink-deep: var(--pink-deep);
 }
 
 :root {
@@ -81,16 +74,9 @@
 	--sidebar-foreground: #e6edf5;
 	--muted: #242c3b;
 	--muted-foreground: #8b9bb4;
-	--accent: #3b82f6;
+	--accent: #f9735c;
 	--accent-foreground: #0d1016;
 	--border: #242c3b;
-	--blue: #3b82f6;
-	--emerald: #10b981;
-	--amber: #f59e0b;
-	--violet: #a78bfa;
-	--cyan: #06b6d4;
-	--pink: #f472b6;
-	--pink-deep: #ec4899;
 }
 
 [data-theme='light'] {
@@ -102,16 +88,9 @@
 	--sidebar-foreground: #1e2430;
 	--muted: #e0e7f0;
 	--muted-foreground: #5e6e86;
-	--accent: #2563eb;
+	--accent: #c2410c;
 	--accent-foreground: #ffffff;
 	--border: #e0e7f0;
-	--blue: #2563eb;
-	--emerald: #059669;
-	--amber: #d97706;
-	--violet: #7c3aed;
-	--cyan: #0891b2;
-	--pink: #db2777;
-	--pink-deep: #be185d;
 }
 
 /* Prose typography colors */

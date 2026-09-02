@@ -39,6 +39,6 @@
 		</a>
 	</div>
 	<div class="mb-4 flex">
-		<span style:padding-right="0.3em">Code with</span><Link href="#">Hazuki Keatsu</Link>
+		<span style:padding-right="0.3em">Code by</span><Link href="#">Hazuki Keatsu</Link>
 	</div>
 </footer>

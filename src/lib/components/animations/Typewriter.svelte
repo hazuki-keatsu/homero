@@ -12,6 +12,7 @@
 		textClass,
 		class: className,
 		start = false,
+		showCaret = true,
 		onComplete,
 		onDeleteComplete
 	}: {
@@ -25,6 +26,7 @@
 		textClass?: string | string[];
 		class?: string | string[];
 		start?: boolean;
+		showCaret?: boolean;
 		onComplete?: () => void;
 		onDeleteComplete?: () => void;
 	} = $props();
@@ -33,6 +35,13 @@
 	let tween: gsap.core.Tween | undefined;
 
 	$effect(() => {
+		// Reduced-motion users get the full text instantly, no blinking caret.
+		// Only the active typewriter shows text — the three are stacked.
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			displayText = start ? text : '';
+			return;
+		}
+
 		let active = true;
 		let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
@@ -113,4 +122,30 @@
 
 <div class={[className, ''].flat()}>
 	<span class={[textClass, ''].flat()}>{displayText}</span>
+	{#if showCaret}
+		<span class="caret" aria-hidden="true"></span>
+	{/if}
 </div>
+
+<style>
+	.caret {
+		display: inline-block;
+		width: 1ch;
+		height: 1.5em;
+		vertical-align: text-bottom;
+		background: var(--color-accent);
+		animation: blink 1s steps(1) infinite;
+	}
+
+	@keyframes blink {
+		50% {
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.caret {
+			animation: none;
+		}
+	}
+</style>

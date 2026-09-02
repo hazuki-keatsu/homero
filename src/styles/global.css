@@ -25,4 +25,9 @@
 		text-decoration: none;
 		outline: 2px dashed var(--color-accent);
 	}
+
+	::selection {
+		background-color: var(--color-accent);
+		color: var(--color-accent-foreground);
+	}
 }

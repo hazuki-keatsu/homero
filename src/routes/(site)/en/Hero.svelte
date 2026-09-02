@@ -4,27 +4,36 @@
 	import ScrollDown from '$lib/components/ScrollDown.svelte';
 	import Typewriter from '$lib/components/animations/Typewriter.svelte';
 	import { siFlutter, siRust, siSvelte, siTypescript } from 'simple-icons';
+	import { onMount } from 'svelte';
+	import gsap from 'gsap';
+
+	onMount(() => {
+		// The single orchestrated entrance of the page: one staggered rise,
+		// then everything settles. Skipped for reduced-motion users.
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		gsap.fromTo(
+			'.hero-enter',
+			{ y: 24, opacity: 0 },
+			{ y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.12, delay: 0.1 }
+		);
+	});
 
 	let badges: BadgeProps[] = [
 		{
 			text: 'Flutter',
-			icon: siFlutter,
-			color: siFlutter.hex
+			icon: siFlutter
 		},
 		{
 			text: 'Svelte',
-			icon: siSvelte,
-			color: siSvelte.hex
+			icon: siSvelte
 		},
 		{
 			text: 'Rust',
-			icon: siRust,
-			color: siRust.hex
+			icon: siRust
 		},
 		{
 			text: 'Typescript',
-			icon: siTypescript,
-			color: siTypescript.hex
+			icon: siTypescript
 		}
 	];
 
@@ -42,13 +51,14 @@
 	id="hero"
 	class="relative mx-auto flex min-h-dvh max-w-5xl flex-col justify-center px-6 pt-16 pb-24"
 >
-	<h1 class="-ml-1 text-6xl font-bold md:text-7xl">Hazuki Keatsu</h1>
+	<h1 class="hero-enter -ml-1 text-6xl font-black tracking-tight md:text-7xl">Hazuki Keatsu</h1>
 
-	<div class="relative mt-6 h-6 font-mono">
+	<div class="hero-enter relative mt-6 h-6 font-mono">
 		<Typewriter
 			class={typewriterClass}
 			textClass={typewriterTextClass}
 			start={typingNote % 3 === 0}
+			showCaret={typingNote % 3 === 0}
 			loop={true}
 			onDeleteComplete={onComplete}
 			text="Front-end Engineering"
@@ -57,6 +67,7 @@
 			class={typewriterClass}
 			textClass={typewriterTextClass}
 			start={typingNote % 3 === 1}
+			showCaret={typingNote % 3 === 1}
 			loop={true}
 			onDeleteComplete={onComplete}
 			text="Source Compiler"
@@ -65,21 +76,22 @@
 			class={typewriterClass}
 			textClass={typewriterTextClass}
 			start={typingNote % 3 === 2}
+			showCaret={typingNote % 3 === 2}
 			loop={true}
 			onDeleteComplete={onComplete}
 			text="Open-source Software"
 		/>
 	</div>
 
-	<p class="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+	<p class="hero-enter mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
 		An undergraduate at Xidian University majoring in Software Engineering. I am proficient in using
 		the frameworks like Flutter and Svelte. Rust is my favorite which I used for my own compiler
 		project.
 	</p>
 
-	<div class="mt-6 flex max-w-2xl gap-5">
+	<div class="hero-enter mt-6 flex max-w-2xl gap-5">
 		{#each badges as badge, index (`badge-${index}`)}
-			<Badge text={badge.text} color={badge.color} icon={badge.icon} />
+			<Badge text={badge.text} icon={badge.icon} />
 		{/each}
 	</div>
 

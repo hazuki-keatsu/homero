@@ -16,9 +16,16 @@
 	<Link noUnderlined={true} href="/{lang.code}" class="text-lg font-bold md:text-xl"
 		>Hazuki Keatsu</Link
 	>
-	<nav class="flex items-center gap-3"></nav>
-	<div class="flex items-center gap-3">
-		<Link data-sveltekit-noscroll href={'/' + anotherLang.code}>{anotherLang.label}</Link>
-		<ThemeButton {lang} />
+	<div class="flex gap-6">
+		<nav class="flex items-center gap-6">
+			<Link href="#hero">Hero</Link>
+			<Link href="#self">About</Link>
+			<Link href="#projects">Projects</Link>
+		</nav>
+		<div class="flex items-center">|</div>
+		<div class="flex items-center gap-3">
+			<Link data-sveltekit-noscroll href={'/' + anotherLang.code}>{anotherLang.label}</Link>
+			<ThemeButton {lang} />
+		</div>
 	</div>
 </header>

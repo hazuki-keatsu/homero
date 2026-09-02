@@ -38,6 +38,13 @@
 	onMount(() => {
 		if (!element) return;
 
+		// Respect reduced motion: content appears immediately, no tween.
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			element.style.opacity = '1';
+			element.style.transform = 'none';
+			return;
+		}
+
 		const triggerConfig: ScrollTrigger.Vars = {
 			trigger: element,
 			start,
