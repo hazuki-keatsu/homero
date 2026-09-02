@@ -12,6 +12,7 @@
 		end,
 		y = 80,
 		opacity = 0,
+		delay = 0,
 		duration = 0.8,
 		ease = 'power2.out',
 		toggleActions = 'play none none none',
@@ -24,6 +25,7 @@
 		end?: string | number | ScrollTrigger.StartEndFunc;
 		y?: number;
 		opacity?: number;
+		delay?: number;
 		duration?: number;
 		ease?: string | gsap.EaseFunction;
 		toggleActions?: string;
@@ -52,6 +54,7 @@
 			{
 				y: 0,
 				opacity: 1,
+				delay,
 				duration,
 				ease,
 				scrollTrigger: triggerConfig

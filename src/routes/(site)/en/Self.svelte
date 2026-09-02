@@ -1,6 +1,3 @@
-<script>
-	import ScrollDown from "$lib/components/ScrollDown.svelte";
-</script>
 <section
 	id="self"
 	class="relative mx-auto flex min-h-dvh max-w-5xl flex-col items-center justify-center gap-10 px-6 py-24 md:flex-row md:justify-between"
@@ -24,7 +21,5 @@
 				free to reach out.
 			</p>
 		</div>
-	</div>
-	
-	<ScrollDown href="#projects" class="absolute right-6 bottom-12" />
+	</div>	
 </section>

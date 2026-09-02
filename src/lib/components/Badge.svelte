@@ -4,18 +4,19 @@
 	import { getTheme } from '$lib/utils/theme.svelte';
 
 	export type BadgeProps = {
-		text: string;
+		text?: string;
 		icon: SimpleIcon;
 		color: string;
+		class?: string | string[];
 	};
 
-	let { text, icon, color }: BadgeProps = $props();
+	let { text, icon, color, class: className }: BadgeProps = $props();
 
 	let theme = $derived(getTheme());
 
-    // percent range is from -1 to 1.
-    // The positive percent is used to darken the hex color,
-    // and the negative percent is used to lighten the hex color.
+	// percent range is from -1 to 1.
+	// The positive percent is used to darken the hex color,
+	// and the negative percent is used to lighten the hex color.
 	function darkenHexHSL(hex: string, percent: number): string {
 		const clean = hex.replace('#', '');
 		const r = parseInt(clean.substring(0, 2), 16);
@@ -104,17 +105,22 @@
 </script>
 
 <div
-	class="container flex items-center rounded-full px-2 py-1 transition-colors duration-200"
+	class={[
+		'container flex items-center rounded-full px-2 py-1 transition-colors duration-200',
+		className
+	].flat()}
 	style:--badge-bg-color="#{bgColor}"
 	style="color: {textColor};"
 >
 	<SIIcon class="badge-icon p-1" {color} {icon} />
-	<span class="text-base sm:text-lg">{text}</span>
+	{#if text !== null}
+		<span class="pr-1 text-base sm:text-lg">{text}</span>
+	{/if}
 </div>
 
 <style>
 	.container {
 		background-color: var(--badge-bg-color);
-		transition: background-color 0.3 ease
+		transition: background-color 0.3 ease;
 	}
 </style>
