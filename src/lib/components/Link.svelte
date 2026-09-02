@@ -105,9 +105,13 @@
 </div>
 
 <style>
+	a {
+		--underline-stroke: 1px;
+	}
+
 	.enabled {
 		background: linear-gradient(var(--color-foreground), var(--color-foreground)) no-repeat;
-		background-size: 0 2px;
+		background-size: 0 var(--underline-stroke);
 		background-position: left bottom;
 	}
 
@@ -116,7 +120,7 @@
 	}
 
 	.anim-entered {
-		background-size: 100% 2px;
+		background-size: 100% var(--underline-stroke);
 	}
 
 	.anim-leave {
@@ -125,22 +129,22 @@
 
 	@keyframes underlined {
 		0% {
-			background-size: 0 2px;
+			background-size: 0 var(--underline-stroke);
 			background-position: left bottom;
 		}
 		100% {
-			background-size: 100% 2px;
+			background-size: 100% var(--underline-stroke);
 			background-position: left bottom;
 		}
 	}
 
 	@keyframes erased {
 		0% {
-			background-size: 100% 2px;
+			background-size: 100% var(--underline-stroke);
 			background-position: right bottom;
 		}
 		100% {
-			background-size: 0 2px;
+			background-size: 0 var(--underline-stroke);
 			background-position: right bottom;
 		}
 	}

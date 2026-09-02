@@ -2,7 +2,7 @@
 	import type { BadgeProps } from '$lib/components/Badge.svelte';
 	import Badge from '$lib/components/Badge.svelte';
 	import ScrollDown from '$lib/components/ScrollDown.svelte';
-	import Typewriter from '$lib/components/Typewriter.svelte';
+	import Typewriter from '$lib/components/animations/Typewriter.svelte';
 	import { siFlutter, siRust, siSvelte, siTypescript } from 'simple-icons';
 
 	let badges: BadgeProps[] = [

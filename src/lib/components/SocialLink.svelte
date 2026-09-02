@@ -3,8 +3,9 @@
 	import { Mail } from '@lucide/svelte';
 	import { SIIcon } from '@willingtonortiz/svelte-simple-icons';
 	import { siBilibili, siGithub } from 'simple-icons';
-	import CurvedArrow from '$lib/components/icons/CurvedArrow.svelte';
+	import CurvedArrow from '$lib/components/svgs/CurvedArrow.svelte';
 	import { getTheme } from '$lib/utils/theme.svelte';
+	import ScrollReveal from './animations/ScrollReveal.svelte';
 
 	let strokeColor = $state('');
 	let theme = $derived(getTheme());
@@ -48,7 +49,9 @@
 	</a>
 	<div class="mt-1 h-20 w-1 bg-foreground"></div>
 	{#key theme}
-		<CurvedArrow class="absolute -top-1 -right-30 h-30 w-25" strokeWidth={5} stroke={strokeColor} />
+		<CurvedArrow class="hidden absolute -top-1 -right-30 h-30 w-25 2xl:block" strokeWidth={5} stroke={strokeColor} />
 	{/key}
-	<div class="absolute -top-4 -right-40 font-bold text-foreground">Contact Me</div>
+	<ScrollReveal class="hidden absolute -top-4 -right-40 2xl:block">
+		<div class="font-bold text-foreground">Contact Me</div>
+	</ScrollReveal>
 </div>
