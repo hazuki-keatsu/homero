@@ -39,7 +39,7 @@
 	});
 </script>
 
-<div bind:this={container} class={['text-accent', className].flat()}>
+<div bind:this={container} class={[className].flat()}>
 	<svg viewBox="0 0 220 300" width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
 		<path
 			d="M 200,50 c -30,100 -90,100 -100,100 c -30,0 -40,-50 0,-50 c 40,0 30,80 -90,80"

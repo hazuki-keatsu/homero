@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { finalHref } from '$lib/utils/finalHref';
 	import type { Snippet } from 'svelte';
-	import { resolve } from '$app/paths';
 
 	let {
 		class: className = '',
@@ -17,14 +17,6 @@
 		noUnderlined?: boolean;
 		[key: string]: unknown;
 	} = $props();
-
-	const finalHref = $derived.by(() => {
-		if (/^(https?:|mailto:|tel:|ftp:)/i.test(href) || href.startsWith('#')) {
-			return href;
-		}
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		return resolve(href as any);
-	});
 
 	type Phase = 'idle' | 'entering' | 'entered' | 'leaving';
 	let phase = $state<Phase>('idle');
@@ -93,7 +85,7 @@
 >
 	<a
 		// eslint-disable-next-line svelte/no-navigation-without-resolve
-		href={disabled ? undefined : finalHref}
+		href={disabled ? undefined : finalHref(href)}
 		tabindex={disabled ? -1 : undefined}
 		aria-disabled={disabled || undefined}
 		{...rest}

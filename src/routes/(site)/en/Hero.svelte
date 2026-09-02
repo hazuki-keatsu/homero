@@ -44,7 +44,7 @@
 >
 	<h1 class="-ml-1 text-6xl font-bold md:text-7xl">Hazuki Keatsu</h1>
 
-	<div class="relative mt-6 h-6">
+	<div class="relative mt-6 h-6 font-mono">
 		<Typewriter
 			class={typewriterClass}
 			textClass={typewriterTextClass}
@@ -83,5 +83,5 @@
 		{/each}
 	</div>
 
-	<ScrollDown class="absolute right-6 bottom-12" />
+	<ScrollDown href="#self" class="absolute right-6 bottom-12" />
 </section>
