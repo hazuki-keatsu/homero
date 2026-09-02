@@ -1,23 +1,12 @@
 <script lang="ts">
 	import { Moon, Sun } from '@lucide/svelte';
 	import { getTheme, toggleTheme } from '$lib/utils/theme.svelte';
-	import type { Locale } from '$lib/utils/i18n';
-
-	let { lang }: { lang: Locale } = $props();
 
 	let theme = $derived(getTheme());
 
 	// The visible icon is the mode the button switches TO (light → moon, dark → sun),
 	// so the icon reads as the action itself, not the current state.
-	let label = $derived(
-		lang.code === 'en'
-			? theme === 'light'
-				? 'Switch to dark mode'
-				: 'Switch to light mode'
-			: theme === 'light'
-				? '切换到暗色模式'
-				: '切换到亮色模式'
-	);
+	let label = $derived(theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
 </script>
 
 <button

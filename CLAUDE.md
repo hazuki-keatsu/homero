@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-homero is the personal site of 叶月枫 (Hazuki, domain keatsu.top): SvelteKit 5 (runes forced) + Tailwind CSS v4 + mdsvex, planned as a fully static Vercel deployment. Bilingual (zh-cn / en) with route-based i18n.
+homero is the personal site of 叶月枫 (Hazuki, domain keatsu.top): SvelteKit 5 (runes forced) + Tailwind CSS v4 + mdsvex, planned as a fully static Vercel deployment. Single-language English content at `/`.
 
 ## Commands
 
@@ -27,13 +27,12 @@ Adapter, mdsvex preprocess (extensions, layout), and forced-runes compiler optio
 ### Static rendering
 
 - `src/routes/+layout.ts` declares `prerender = true` for the whole site. It must live in the `.ts` file — declaring it in a `+layout.svelte` module script is silently ignored (SvelteKit warns).
-- Root `/` (`src/routes/+page.svelte`) is a noindex redirect page: onMount detects `navigator.language` (zh* → `/zh-cn`, else `/en`) and `goto`s with `replaceState`.
+- The home page lives at `src/routes/(site)/+page.svelte`, composed from the co-located `Hero.svelte` / `Self.svelte` / `Projects.svelte` / `Footer.svelte`; the `(site)` group layout renders the shell (Header with anchor nav + theme toggle).
 
-### i18n (route-based)
+### Language
 
-- Content pages live at `src/routes/(site)/{zh-cn,en}/+page.svelte`; the `(site)` group layout renders the shell (Header with one-way locale switcher and theme switch). Add a locale by extending `LOCALES` in `src/lib/utils/i18n.ts` and adding a route.
-- `<html lang>`: `%lang%` placeholder in `src/app.html`, replaced server-side by `hooks.server.ts` via `transformPageChunk`; client-side navigations sync `document.documentElement.lang` with an `$effect` in the `(site)` layout (Svelte 5 cannot set `<html>` from `<svelte:head>`).
-- `src/lib/site.ts` — site metadata (name, origin, per-locale descriptions).
+- Single-language site, no i18n handling anywhere. `<html lang="en">` is set literally in `src/app.html`.
+- `src/lib/site.ts` — site metadata (name, origin, description string, social links).
 
 ### Theme system — single source of truth is CSS
 
@@ -47,7 +46,7 @@ Adapter, mdsvex preprocess (extensions, layout), and forced-runes compiler optio
 
 - The layout path must be absolute from the config file: `join(import.meta.dirname, 'src/lib/layouts/MDLayout.svelte')`. `$lib/` or `./src/` forms fail.
 - `layoutPropForwarding: 'runes'` is required — the legacy default fails to compile under forced runes.
-- Layout contract (`src/lib/layouts/MDLayout.svelte`): frontmatter keys are spread in as props, markdown renders into the default `Snippet`. It emits the SEO head (title, description, canonical, hreflang alternates, OG, Twitter) and wraps content in `.prose`.
+- Layout contract (`src/lib/layouts/MDLayout.svelte`): frontmatter keys are spread in as props, markdown renders into the default `Snippet`. It emits the SEO head (title, description, canonical — currently the bare origin, see TODO in file, OG, Twitter) and wraps content in `.prose`. No hreflang alternates.
 - rehype-slug + rehype-autolink-headings inject empty anchor links; the `#` glyph is drawn with CSS in `src/styles/global.css` so heading `textContent` stays clean. Also in global.css: heading anchor scroll-margin-top clears the sticky header.
 
 ### Components (src/lib/components/)
@@ -55,15 +54,15 @@ Adapter, mdsvex preprocess (extensions, layout), and forced-runes compiler optio
 - `Link.svelte` — underline-draw animation driven by a phase state machine (`idle/entering/entered/leaving`); routes internal hrefs through `resolve()`.
 - `Button.svelte` — wipe-fill animation on click, disabled-aware.
 - `Switcher.svelte` — toggle switch (used as the theme switcher).
-- `Header.svelte` — sticky bar; `$derived` locale + one-way switch to the other locale; theme toggle.
+- `Header.svelte` — sticky bar; logo, anchor nav to `#hero` / `#self` / `#projects`, theme toggle.
 
 ### SEO
 
-- `src/routes/sitemap.xml/+server.ts` prerenders the sitemap with xhtml hreflang alternates; `static/robots.txt` points at it.
+- `src/routes/sitemap.xml/+server.ts` prerenders a sitemap with a single url for the origin root; `static/robots.txt` points at it.
 - `src/routes/+error.svelte` is the 404 fallback (client-rendered after hydration; static `error.html` is a future TODO).
 
 ## Known pitfalls
 
-- `resolve()` from `$app/paths` is typed over route literals: `'/' + x` widens to `string` and fails typecheck — assert the target, e.g. `as '/zh-cn' | '/en'`.
+- Navigation targets that are pure `#anchor` fragments skip `resolve()` entirely (see `finalHref`) and assume a single-page structure — if real subpages are added later, section links must become e.g. `/#hero` through `resolve()`.
 - ESLint rule `svelte/no-navigation-without-resolve` requires navigation to go through `resolve()`.
 - Local fonts (`src/lib/assets/fonts/`, HarmonyOS Sans SC, 6 weights) are uncompressed TTFs ~8 MB each — converting to woff2 is a known TODO.

@@ -7,7 +7,7 @@
 		<img
 			class="order-first h-40 w-40 rounded-full border-2 border-border transition-colors duration-300 hover:border-accent sm:h-48 sm:w-48 md:order-0 md:h-52 md:w-52 lg:h-56 lg:w-56"
 			alt="Hazuki Keatsu"
-			src="profile-pic.png"
+			src="/profile-pic.png"
 		/>
 
 		<div class="w-full max-w-2xl">

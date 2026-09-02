@@ -8,6 +8,7 @@
 		href,
 		disabled = false,
 		noUnderlined = false,
+		active = false,
 		...rest
 	}: {
 		class?: string | string[];
@@ -15,6 +16,7 @@
 		href: string;
 		disabled?: boolean;
 		noUnderlined?: boolean;
+		active?: boolean;
 		[key: string]: unknown;
 	} = $props();
 
@@ -60,7 +62,7 @@
 		[
 			className,
 			disabled && 'pointer-events-none opacity-50 text-muted-foreground',
-			!disabled && 'text-foreground'
+			!disabled && (active ? 'text-accent' : 'text-foreground')
 		].flat()
 	);
 
@@ -101,7 +103,8 @@
 	}
 
 	.enabled {
-		background: linear-gradient(var(--color-foreground), var(--color-foreground)) no-repeat;
+		/* draw the underline in the link's own text color (accent when active) */
+		background: linear-gradient(currentColor, currentColor) no-repeat;
 		background-size: 0 var(--underline-stroke);
 		background-position: left bottom;
 	}
