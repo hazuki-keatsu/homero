@@ -15,7 +15,7 @@
 </script>
 
 <div role="presentation" class={[className, 'py-2']}>
-	// eslint-disable-next-line svelte/no-navigation-without-resolve
+	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 	<a href={finalHref(href)} class="text-xl" {...rest}> Scroll Down </a>
 </div>
 
