@@ -50,12 +50,12 @@
 	<div class="mt-1 h-20 w-1 bg-foreground"></div>
 	{#key theme}
 		<CurvedArrow
-			class="absolute -top-1 -right-30 hidden h-30 w-25 2xl:block"
+			class="absolute -top-1 -right-25 hidden h-30 w-20 xl:block"
 			strokeWidth={5}
 			stroke={strokeColor}
 		/>
 	{/key}
-	<ScrollReveal class="absolute -top-4 -right-40 hidden 2xl:block">
-		<div class="font-bold text-foreground">Contact Me</div>
+	<ScrollReveal class="absolute -top-2 -right-32 hidden xl:block">
+		<div class="font-bold text-foreground text-sm">Contact Me</div>
 	</ScrollReveal>
 </div>

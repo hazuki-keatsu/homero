@@ -1,6 +1,7 @@
 <script>
 	import { site } from '$lib/site';
 	import Footer from './Footer.svelte';
+	import Experience from './Experience.svelte';
 	import Hero from './Hero.svelte';
 	import Projects from './Projects.svelte';
 	import Self from './Self.svelte';
@@ -15,6 +16,7 @@
 <main>
 	<Hero />
 	<Self />
+	<Experience />
 	<Projects />
 	<Footer />
 </main>

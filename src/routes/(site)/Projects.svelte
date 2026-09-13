@@ -4,6 +4,7 @@
 	import {
 		siFlutter,
 		siGithub,
+		siGo,
 		siKotlin,
 		siLlvm,
 		siRust,
@@ -39,11 +40,12 @@
 			role: 'Cooperator'
 		},
 		{
-			name: 'Corgi',
+			name: 'Gane',
 			description:
-				'Corgi is a language centered around explicit allocators. It does away with garbage collection and borrow checking, while keeping C-level performance, and offers a Go-like easy-to-read concurrency model with type safety. Still in developing...',
+				"Gane is a project still in developing. It is a Go language compiler and compilation architecture under a no-std environment that combines JIT and AOT compilation. It is dedicated to addressing the stop-the-world problem of Go language's GC during operation, while also providing an engineering practice for the design of compilers with higher execution performance.",
 			stack: [
 				{ text: 'Rust', icon: siRust },
+				{ text: 'Go', icon: siGo },
 				{ text: 'LLVM', icon: siLlvm }
 			],
 			role: 'Owner'
