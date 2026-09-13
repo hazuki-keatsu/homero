@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { Menu, X } from '@lucide/svelte';
 
-	let { open, onclick, controls }: {
+	let {
+		open,
+		onclick,
+		controls
+	}: {
 		open: boolean;
 		onclick: () => void;
 		controls?: string;
@@ -17,7 +21,7 @@
 	aria-expanded={open}
 	aria-controls={controls}
 	class="flex size-9 overflow-hidden rounded-sm bg-card transition-colors hover:bg-muted"
-	onclick={onclick}
+	{onclick}
 >
 	<span class="track" class:open>
 		<span class="slot"><Menu size={18} strokeWidth={1.75} /></span>

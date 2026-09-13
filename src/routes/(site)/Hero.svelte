@@ -89,7 +89,7 @@
 		project.
 	</p>
 
-	<div class="hero-enter mt-6 flex max-w-2xl gap-5">
+	<div class="hero-enter mt-6 flex max-w-2xl flex-wrap gap-3 sm:gap-5">
 		{#each badges as badge, index (`badge-${index}`)}
 			<Badge text={badge.text} icon={badge.icon} />
 		{/each}

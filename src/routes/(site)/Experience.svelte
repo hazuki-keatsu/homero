@@ -17,8 +17,7 @@
 			date: '24-09-01',
 			kind: 'Education',
 			title: 'Software Engineering at XDU',
-			summary:
-				'Even though there are some regrets, I still welcomed a brand new beginning.',
+			summary: 'Even though there are some regrets, I still welcomed a brand new beginning.',
 			highlights: ['Software Engineering'],
 			side: 'left'
 		},
@@ -36,11 +35,10 @@
 			marker: 'NOW',
 			kind: 'Exploration',
 			title: 'Compiler',
-			summary:
-				'Exploring the boundary between language design and systems programming.',
+			summary: 'Exploring the boundary between language design and systems programming.',
 			highlights: ['Rust', 'LLVM'],
 			side: 'left'
-		},
+		}
 	];
 </script>
 
@@ -78,9 +76,7 @@
 							<time
 								class={[
 									'hidden font-mono text-sm font-semibold tracking-wide text-muted-foreground md:row-start-1 md:mt-7 md:flex md:h-8 md:items-center',
-									experience.side === 'right'
-										? 'md:col-start-1 md:justify-end'
-										: 'md:col-start-2'
+									experience.side === 'right' ? 'md:col-start-1 md:justify-end' : 'md:col-start-2'
 								]}
 								datetime={experience.date}
 							>
@@ -105,7 +101,10 @@
 										{experience.kind}
 									</p>
 									{#if experience.date}
-										<time class="font-mono text-xs text-muted-foreground md:hidden" datetime={experience.date}>
+										<time
+											class="font-mono text-xs text-muted-foreground md:hidden"
+											datetime={experience.date}
+										>
 											{experience.date}
 										</time>
 									{/if}

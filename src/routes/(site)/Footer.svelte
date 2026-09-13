@@ -5,8 +5,6 @@
 	import { SIIcon } from '@willingtonortiz/svelte-simple-icons';
 	import { siBilibili, siGithub } from 'simple-icons';
 	import { Heart } from '@lucide/svelte';
-
-	const footerLinks = [{ label: 'Blog', href: 'https://blog.keatsu.top' }];
 </script>
 
 <footer class="flex w-full flex-col items-center">
@@ -41,15 +39,9 @@
 			<Mail class="text-foreground" />
 		</a>
 	</div>
-	<div class="mb-2 flex items-center gap-1 text-sm text-muted-foreground">
-		{#each footerLinks as link (link.href)}
-			<span>{link.label}:</span>
-			<Link href={link.href} target="_blank" rel="noopener noreferrer external">{link.href}</Link>
-		{/each}
-	</div>
 	<div class="mb-4 flex">
-		<span style:padding-right="0.3em">Code with</span> 
-		<Heart class="mr-1" /> 
+		<span style:padding-right="0.3em">Code with</span>
+		<Heart class="mr-1" />
 		<span>by</span><Link class="ml-1" href="#">Hazuki Keatsu</Link>
 	</div>
 </footer>

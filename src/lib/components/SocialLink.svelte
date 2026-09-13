@@ -56,6 +56,6 @@
 		/>
 	{/key}
 	<ScrollReveal class="absolute -top-2 -right-32 hidden xl:block">
-		<div class="font-bold text-foreground text-sm">Contact Me</div>
+		<div class="text-sm font-bold text-foreground">Contact Me</div>
 	</ScrollReveal>
 </div>

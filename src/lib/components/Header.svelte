@@ -65,9 +65,7 @@
 </script>
 
 <header class="fixed inset-x-0 z-30 bg-card/50 backdrop-blur-md">
-	<div
-		class="flex items-center justify-between px-3 py-3 transition-[padding] md:px-6"
-	>
+	<div class="flex items-center justify-between px-3 py-3 transition-[padding] md:px-6">
 		<Link noUnderlined={true} href="/" class="text-lg font-bold md:text-xl">Hazuki Keatsu</Link>
 		<div class="flex items-center">
 			<!-- md and up: inline links + theme toggle -->
@@ -83,6 +81,10 @@
 						</Link>
 					{/each}
 				</nav>
+				<span class="h-5 border-l border-border" aria-hidden="true"></span>
+				<Link href="https://blog.keatsu.top" target="_blank" rel="noopener noreferrer external">
+					Blog
+				</Link>
 				<ThemeButton />
 			</div>
 			<!-- below md: everything collapses behind the menu button -->
@@ -109,7 +111,9 @@
 	>
 		<div class="min-h-0 overflow-hidden">
 			<div
-				class="px-3 pb-3 transition-[opacity,transform] duration-300 ease-out {menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0'}"
+				class="px-3 pb-3 transition-[opacity,transform] duration-300 ease-out {menuOpen
+					? 'translate-y-0 opacity-100'
+					: '-translate-y-2 opacity-0'}"
 			>
 				<nav class="flex flex-col" aria-label="Site sections">
 					{#each sections as { id, label } (id)}
@@ -121,15 +125,25 @@
 								menuOpen = false;
 							}}
 							noUnderlined={true}
-							class="[&_a]:block [&_a]:my-3 [&_a]:text-base [&_a]:transition-colors [&_a:hover]:bg-muted/60"
+							class="[&_a]:my-3 [&_a]:block [&_a]:text-base [&_a]:transition-colors [&_a:hover]:bg-muted/60"
 						>
 							{label}
 						</Link>
 					{/each}
 				</nav>
-				<div class="mt-3 flex items-center gap-3 border-t border-border pt-3">
-					<ThemeButton />
-					<span class="text-sm text-muted-foreground">Theme</span>
+				<div class="mt-3 flex items-center border-t border-border pt-3">
+					<div class="flex items-center gap-3">
+						<ThemeButton />
+						<span class="text-sm text-muted-foreground">Theme</span>
+					</div>
+					<Link
+						href="https://blog.keatsu.top"
+						target="_blank"
+						rel="noopener noreferrer external"
+						class="mr-3 ml-auto"
+					>
+						Blog
+					</Link>
 				</div>
 			</div>
 		</div>
